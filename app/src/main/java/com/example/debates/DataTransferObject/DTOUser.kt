@@ -1,4 +1,4 @@
-package com.example.debates
+package com.example.debates.DataTransferObject
 
 class DTOUser
 {

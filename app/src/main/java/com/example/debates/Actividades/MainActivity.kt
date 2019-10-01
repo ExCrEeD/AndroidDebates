@@ -1,13 +1,14 @@
-package com.example.debates
+package com.example.debates.Actividades
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.view.View
 import android.widget.TextView
-import com.google.gson.JsonObject
-import org.json.JSONArray
-import org.json.JSONObject
+import com.example.debates.ApiService
+import com.example.debates.DataTransferObject.DTOUser
+import com.example.debates.R
+import com.example.debates.resultsCallbacks
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -24,12 +25,13 @@ class MainActivity : AppCompatActivity() {
 
     fun login(view: View)
     {
-        var user:DTOUser = DTOUser()
+        var user: DTOUser =
+            DTOUser()
         val txt_email : TextView = findViewById(R.id.txt_email) as TextView
         val txt_password : TextView = findViewById(R.id.txt_password) as TextView
         user.Email = txt_email.text.toString()
         user.Password = txt_password.text.toString()
-        validateLogin(user,object: resultsCallbacks{
+        validateLogin(user,object: resultsCallbacks {
             override fun Succes(response: String) {
                 Log.v(":D",response)
             }
@@ -40,7 +42,7 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    fun validateLogin(user:DTOUser,callback:resultsCallbacks)
+    fun validateLogin(user: DTOUser, callback: resultsCallbacks)
     {
         val retrofit : Retrofit = Retrofit.Builder().
             baseUrl(urlUser).

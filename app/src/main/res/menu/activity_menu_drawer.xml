@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/MenuScroll"
+            android:icon="@drawable/ic_menu_camera"
+            android:title="Ver debates" />
+        <item
+            android:id="@+id/MenuCreateDebate"
+            android:icon="@drawable/ic_menu_gallery"
+            android:title="Crear debate" />
+        <item
+            android:id="@+id/MenuReport"
+            android:icon="@drawable/ic_menu_slideshow"
+            android:title="Informes" />
+        <item
+            android:id="@+id/MenuRegisterUser"
+            android:icon="@drawable/ic_menu_manage"
+            android:title="Crear usuario" />
+    </group>
+
+    <item android:title="Cuenta">
+        <menu>
+            <item
+                android:id="@+id/MenuLogout"
+                android:icon="@drawable/ic_menu_share"
+                android:title="Cerrar sesion" />
+            <item
+                android:id="@+id/MenuDeleteAccount"
+                android:icon="@drawable/ic_menu_send"
+                android:title="Eliminar cuenta" />
+        </menu>
+    </item>
+
+</menu>

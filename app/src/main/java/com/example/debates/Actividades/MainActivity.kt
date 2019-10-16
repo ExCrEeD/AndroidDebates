@@ -10,8 +10,10 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.bumptech.glide.Glide
 import com.example.debates.*
+import com.example.debates.DataTransferObject.DTOMenu
 import com.example.debates.DataTransferObject.DTOUser
 import com.google.gson.Gson
+import android.content.Intent
 
 
 class MainActivity : AppCompatActivity() {
@@ -34,13 +36,9 @@ class MainActivity : AppCompatActivity() {
                                             .getLoginCredentials(user.Email,user.Password)
         httpResponseDebates(solicitudHttp,object: resultsCallbacks {
             override fun solicitudExitosa(response: String) {
-//                Log.v("qwerts",response)
-                var gson = Gson()
-                var userInfo = gson?.fromJson(response, DTOUser::class.java)
-                Log.v("qwerts",userInfo.Name)
-                Log.v("qwerts",userInfo.SecondName)
-               // activateGif(false)
-
+                storedUserInfo(response)
+                activateGif(false)
+                openMenu()
             }
             override fun solicitudFallida(response: String) {
                 activateGif(false)
@@ -69,6 +67,39 @@ class MainActivity : AppCompatActivity() {
         }
     }
 
+    fun storedUserInfo(json:String)
+    {
+        val gson = Gson()
+        var userInfo = gson?.fromJson(json, DTOUser::class.java)
+        //PoliDebates.localStorage.name = userInfo.Name
+        PoliDebates.localStorage.setName(userInfo.Name)
+        PoliDebates.localStorage.setEmail(userInfo.Email)
+        PoliDebates.localStorage.setSecondName(userInfo.SecondName)
+        PoliDebates.localStorage.setRol(userInfo.Rol)
+        PoliDebates.localStorage.setId(userInfo.Id)
 
+        val solicitudHttp = httpRequestDebates.create(ApiService::class.java)
+                                            .getRolMenu(userInfo.Rol)
+         //cargar opciones del menu para el perfil de usuario
+        httpResponseDebates(solicitudHttp,object: resultsCallbacks {
+            override fun solicitudExitosa(response: String) {
+                val gson = Gson()
+                var menuOptions:DTOMenu = gson?.fromJson(response, DTOMenu::class.java)
+                PoliDebates.localStorage.setMenuCreateDebate(menuOptions.CreateDebate)
+                PoliDebates.localStorage.setMenuReport(menuOptions.Report)
+                PoliDebates.localStorage.setMenuScroll(menuOptions.Scroll)
+                PoliDebates.localStorage.setMenuUserInfo(menuOptions.UserInfo)
+                PoliDebates.localStorage.setMenuRegisterUser(menuOptions.RegisterUser)
+            }
+            override fun solicitudFallida(response: String) {
+                Log.e("errorPoliDebates",response)
+            }
+        })
+    }
+
+    fun openMenu(){
+        val intent = Intent(this, Menu::class.java)
+        startActivity(intent)
+    }
 
 }

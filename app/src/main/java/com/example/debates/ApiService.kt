@@ -1,6 +1,7 @@
 package com.example.debates
 
 import com.example.debates.DataTransferObject.DTOUser
+import com.google.gson.JsonArray
 import com.google.gson.JsonObject
 import org.json.JSONObject
 import retrofit2.Call
@@ -18,6 +19,10 @@ interface  ApiService{
     @GET("user/getRolMenu")
     fun getRolMenu(@Query("rol") rol:String): Call<JsonObject>
 
+    @GET("debates/")
+    fun getDebates(@Query("idUsuario") idUsuario:Int): Call<JsonArray>
+
+
 }
 
 interface resultsCallbacks {
@@ -33,6 +38,19 @@ interface resultsCallbacks {
             }
         }
         override fun onFailure(call: Call<JsonObject>, t: Throwable) {
+            callback.solicitudFallida(t.message.toString())
+        }
+    })
+}
+
+fun httpResponseArrayDebates(httpRequestDebates: Call<JsonArray>,callback: resultsCallbacks) {
+    httpRequestDebates.enqueue(object : Callback<JsonArray> {
+        override fun onResponse(call: Call<JsonArray>, response: Response<JsonArray>) {
+            if (response.isSuccessful() && response.body() != null) {
+                callback.solicitudExitosa(response.body().toString())
+            }
+        }
+        override fun onFailure(call: Call<JsonArray>, t: Throwable) {
             callback.solicitudFallida(t.message.toString())
         }
     })

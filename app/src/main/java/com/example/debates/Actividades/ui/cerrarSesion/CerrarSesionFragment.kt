@@ -1,4 +1,4 @@
-package com.example.debates.Actividades.ui.gallery
+package com.example.debates.Actividades.ui.cerrarSesion
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -10,20 +10,20 @@ import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.example.debates.R
 
-class GalleryFragment : Fragment() {
+class CerrarSesionFragment : Fragment() {
 
-    private lateinit var galleryViewModel: GalleryViewModel
+    private lateinit var shareViewModel: CerrarSesionViewModel
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        galleryViewModel =
-            ViewModelProviders.of(this).get(GalleryViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_gallery, container, false)
-        val textView: TextView = root.findViewById(R.id.text_gallery)
-        galleryViewModel.text.observe(this, Observer {
+        shareViewModel =
+            ViewModelProviders.of(this).get(CerrarSesionViewModel::class.java)
+        val root = inflater.inflate(R.layout.fragment_share, container, false)
+        val textView: TextView = root.findViewById(R.id.text_share)
+        shareViewModel.text.observe(this, Observer {
             textView.text = it
         })
         return root

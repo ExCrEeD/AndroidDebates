@@ -1,13 +1,13 @@
-package com.example.debates.Actividades.ui.tools
+package com.example.debates.Actividades.ui.crearUsuario
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class ToolsViewModel : ViewModel() {
+class CrearUsuarioViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
-        value = "This is tools Fragment"
+        value = "crear usuario"
     }
     val text: LiveData<String> = _text
 }

@@ -41,6 +41,7 @@ class MainActivity : AppCompatActivity() {
                 openMenu()
             }
             override fun solicitudFallida(response: String) {
+                Log.e("errorPoliDebates",response)
                 activateGif(false)
                 val builder = AlertDialog.Builder(this@MainActivity)
                 builder.setTitle("Inicio de sesion")

@@ -1,13 +1,13 @@
-package com.example.debates.Actividades.ui.share
+package com.example.debates.Actividades.ui.Informes
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 
-class ShareViewModel : ViewModel() {
+class InformesViewModel : ViewModel() {
 
     private val _text = MutableLiveData<String>().apply {
-        value = "This is share Fragment"
+        value = "informes"
     }
     val text: LiveData<String> = _text
 }

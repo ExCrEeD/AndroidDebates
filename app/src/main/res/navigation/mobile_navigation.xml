@@ -11,32 +11,26 @@
         android:label="Ver Debates" />
 
     <fragment
-        android:id="@+id/nav_gallery"
-        android:name="com.example.debates.Actividades.ui.gallery.GalleryFragment"
-        android:label="@string/menu_gallery"
-        tools:layout="@layout/fragment_gallery" />
+        android:id="@+id/MenuCreateDebate"
+        android:name="com.example.debates.Actividades.ui.crearDebate.CrearDebateFragment"
+        android:label="Crear debate" />
 
     <fragment
-        android:id="@+id/nav_slideshow"
-        android:name="com.example.debates.Actividades.ui.slideshow.SlideshowFragment"
-        android:label="@string/menu_slideshow"
-        tools:layout="@layout/fragment_slideshow" />
+        android:id="@+id/MenuReport"
+        android:name="com.example.debates.Actividades.ui.Informes.InformesFragment"
+        android:label="@string/menu_slideshow" />
 
     <fragment
-        android:id="@+id/nav_tools"
-        android:name="com.example.debates.Actividades.ui.tools.ToolsFragment"
+        android:id="@+id/MenuRegisterUser"
+        android:name="com.example.debates.Actividades.ui.crearUsuario.CrearUsuarioFragment"
         android:label="@string/menu_tools"
         tools:layout="@layout/fragment_tools" />
 
     <fragment
-        android:id="@+id/nav_share"
-        android:name="com.example.debates.Actividades.ui.share.ShareFragment"
+        android:id="@+id/MenuLogout"
+        android:name="com.example.debates.Actividades.ui.cerrarSesion.CerrarSesionFragment"
         android:label="@string/menu_share"
         tools:layout="@layout/fragment_share" />
 
-    <fragment
-        android:id="@+id/nav_send"
-        android:name="com.example.debates.Actividades.ui.send.SendFragment"
-        android:label="@string/menu_send"
-        tools:layout="@layout/fragment_send" />
+
 </navigation>

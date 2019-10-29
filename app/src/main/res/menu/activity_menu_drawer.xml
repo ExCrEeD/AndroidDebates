@@ -6,33 +6,25 @@
     <group android:checkableBehavior="single">
         <item
             android:id="@+id/MenuScroll"
-            android:icon="@drawable/ic_menu_camera"
+            android:icon="@drawable/ic_debate"
             android:title="Ver debates" />
         <item
             android:id="@+id/MenuCreateDebate"
-            android:icon="@drawable/ic_menu_gallery"
+            android:icon="@drawable/ic_crear_debate"
             android:title="Crear debate" />
         <item
             android:id="@+id/MenuReport"
-            android:icon="@drawable/ic_menu_slideshow"
+            android:icon="@drawable/ic_report"
             android:title="Informes" />
         <item
             android:id="@+id/MenuRegisterUser"
-            android:icon="@drawable/ic_menu_manage"
+            android:icon="@drawable/ic_adduser"
             android:title="Crear usuario" />
-    </group>
 
-    <item android:title="Cuenta">
-        <menu>
-            <item
-                android:id="@+id/MenuLogout"
-                android:icon="@drawable/ic_menu_share"
-                android:title="Cerrar sesion" />
-            <item
-                android:id="@+id/MenuDeleteAccount"
-                android:icon="@drawable/ic_menu_send"
-                android:title="Eliminar cuenta" />
-        </menu>
-    </item>
+        <item
+            android:id="@+id/MenuLogout"
+            android:icon="@drawable/ic_logout"
+            android:title="Cerrar sesion" />
+    </group>
 
 </menu>

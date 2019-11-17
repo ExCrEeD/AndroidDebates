@@ -1,22 +1,39 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:ignore="MissingDefaultResource">
+    android:orientation="vertical" >
 
-    <TextView
-        android:id="@+id/text_gallery"
+    <EditText
+        android:id="@+id/editText_tittle_debate"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginTop="8dp"
-        android:layout_marginEnd="8dp"
-        android:textAlignment="center"
-        android:textSize="20sp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="30dp"
+        android:ems="10"
+        android:hint="Titulo debate">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+        <requestFocus />
+    </EditText>
+
+    <EditText
+        android:id="@+id/editText_description_debate"
+        android:layout_width="match_parent"
+        android:layout_height="195dp"
+        android:layout_below="@+id/editText_tittle_debate"
+        android:layout_marginTop="26dp"
+        android:ems="10"
+        android:hint="Descripcion debate" />
+
+    <Button
+        android:id="@+id/button_create_debate"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_marginTop="17dp"
+        android:layout_marginBottom="283dp"
+        android:gravity="center"
+        android:text="Crear Debate"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
+</RelativeLayout>

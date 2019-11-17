@@ -2,7 +2,14 @@ package com.example.debates
 
 import android.app.Application
 import android.content.Context
+import android.content.Intent
 import android.content.SharedPreferences
+import android.util.Log
+import androidx.core.content.ContextCompat.startActivity
+import com.example.debates.Actividades.Menu
+import com.example.debates.DataTransferObject.DTOMenu
+import com.example.debates.DataTransferObject.DTOUser
+import com.google.gson.Gson
 
 
 class PoliDebates : Application() {
@@ -55,6 +62,15 @@ class LocalStorage (context: Context) {
     fun setEmail(email:String){
         val editor = prefs.edit()
         editor.putString("email",email)
+        editor.apply()
+    }
+
+    fun getPassword() : String? {
+        return prefs.getString("password","")
+    }
+    fun setPassword(password:String){
+        val editor = prefs.edit()
+        editor.putString("password",password)
         editor.apply()
     }
 
@@ -111,5 +127,20 @@ class LocalStorage (context: Context) {
         editor.putBoolean("menuRegisterUser",menuRegisterUser)
         editor.apply()
     }
+
+     fun clearStoredUserInfo(){
+         PoliDebates.localStorage.setName("")
+         PoliDebates.localStorage.setEmail("")
+         PoliDebates.localStorage.setSecondName("")
+         PoliDebates.localStorage.setRol("")
+         PoliDebates.localStorage.setId(-1)
+         PoliDebates.localStorage.setPassword("")
+         PoliDebates.localStorage.setMenuCreateDebate(false)
+         PoliDebates.localStorage.setMenuReport(false)
+         PoliDebates.localStorage.setMenuScroll(false)
+         PoliDebates.localStorage.setMenuUserInfo(false)
+         PoliDebates.localStorage.setMenuRegisterUser(false)
+     }
+
 
 }

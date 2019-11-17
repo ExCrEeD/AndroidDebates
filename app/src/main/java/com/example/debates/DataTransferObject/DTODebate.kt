@@ -1,7 +1,6 @@
 package com.example.debates.DataTransferObject
 
-import java.util.*
-
+import java.sql.Date
 
 class DTODebate
 {

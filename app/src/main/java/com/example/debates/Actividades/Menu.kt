@@ -65,7 +65,7 @@ class Menu : AppCompatActivity() {
 
     private fun setUserInfo(){
         var txt_username : TextView = findViewById(R.id.txt_userName) as TextView
-        txt_username.setText( PoliDebates.localStorage.getName()+" "+ PoliDebates.localStorage.getSecondName())
+        txt_username.setText(PoliDebates.localStorage.getName()+" "+ PoliDebates.localStorage.getSecondName())
         var txt_userEmail : TextView = findViewById(R.id.txt_userEmail) as TextView
         txt_userEmail.setText(PoliDebates.localStorage.getEmail())
     }

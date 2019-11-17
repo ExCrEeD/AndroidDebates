@@ -24,13 +24,13 @@
         android:id="@+id/MenuRegisterUser"
         android:name="com.example.debates.Actividades.ui.crearUsuario.CrearUsuarioFragment"
         android:label="@string/menu_tools"
-        tools:layout="@layout/fragment_tools" />
+        tools:layout="@layout/fragment_crearusuario" />
 
     <fragment
         android:id="@+id/MenuLogout"
         android:name="com.example.debates.Actividades.ui.cerrarSesion.CerrarSesionFragment"
         android:label="@string/menu_share"
-        tools:layout="@layout/fragment_share" />
+        tools:layout="@layout/fragment_cerrarsesion" />
 
 
 </navigation>

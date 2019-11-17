@@ -1,16 +1,11 @@
 package com.example.debates
 
-import com.example.debates.DataTransferObject.DTOUser
 import com.google.gson.JsonArray
 import com.google.gson.JsonObject
-import org.json.JSONObject
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.Path
-import retrofit2.http.Query
+import retrofit2.http.*
 
 interface  ApiService{
     @GET("user/getLogin")
@@ -22,6 +17,11 @@ interface  ApiService{
     @GET("debates/")
     fun getDebates(@Query("idUsuario") idUsuario:Int): Call<JsonArray>
 
+    @POST("user/")
+    fun postAddUser(@Body newUser: JsonObject): Call<JsonObject>
+
+    @POST("debates/")
+    fun postAddDebate(@Body newDebate: JsonObject): Call<JsonObject>
 
 }
 

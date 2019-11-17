@@ -14,10 +14,11 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         android:usesCleartextTraffic="true">
+        <activity android:name=".Actividades.Login"></activity>
         <activity
             android:name=".Actividades.Menu"
             android:label="@string/title_activity_menu"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".Actividades.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

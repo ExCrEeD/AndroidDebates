@@ -63,11 +63,12 @@ class DebateRecyclerAdapter : RecyclerView.Adapter<RecyclerView.ViewHolder>()
             val requestOptions = RequestOptions()
                 .placeholder(R.drawable.ic_launcher_background)
                 .error(R.drawable.ic_launcher_background)
-
-            Glide.with(itemView.context)
-                .applyDefaultRequestOptions(requestOptions)
-                .load(UrlBase+"Content/themes/base/images/a.jpg")
-                .into(debate_image)
+            if(debate.haveImage()){
+                Glide.with(itemView.context)
+                    .applyDefaultRequestOptions(requestOptions)
+                    .load(UrlBase+debate.Image)
+                    .into(debate_image)
+            }
             debate_title.setText(debate.Titulo)
             debate_author.setText(debate.AutorName)
             debate_topic.setText(debate.Tema)

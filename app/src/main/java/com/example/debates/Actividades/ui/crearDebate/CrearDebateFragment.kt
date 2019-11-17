@@ -20,11 +20,25 @@ import com.example.debates.DataTransferObject.DTOUser
 import com.google.gson.Gson
 import com.google.gson.JsonObject
 import kotlinx.android.synthetic.main.fragment_creardebate.*
+import androidx.core.app.ActivityCompat.startActivityForResult
+import android.content.Intent
+import android.provider.MediaStore
+import android.graphics.Bitmap
+import android.app.Activity
+import android.R.attr.data
+import android.R.attr.data
+import android.graphics.ImageDecoder
+import android.os.Build
+import android.util.Base64
+import kotlinx.android.synthetic.main.nav_header_menu.*
+import java.io.ByteArrayOutputStream
+import java.io.IOException
+
 
 class CrearDebateFragment : Fragment() {
 
 
-
+    lateinit var imagedebate:ByteArray
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
@@ -33,17 +47,45 @@ class CrearDebateFragment : Fragment() {
 
         val root = inflater.inflate(R.layout.fragment_creardebate, container, false)
         val btnCrearDebate: Button = root.findViewById(R.id.button_create_debate)
+        val btnImage: Button = root.findViewById(R.id.button_pick_image)
+        btnImage.setOnClickListener(View.OnClickListener {
+            val photoPickerIntent = Intent(Intent.ACTION_PICK)
+            photoPickerIntent.type = "image/*"
+            startActivityForResult(photoPickerIntent, 0)
+        })
+
         btnCrearDebate.setOnClickListener(View.OnClickListener {
             var nuevoDebate: DTODebate = DTODebate()
             nuevoDebate.Titulo = editText_tittle_debate.text.toString()
             nuevoDebate.Tema = editText_description_debate.text.toString()
+            nuevoDebate.ImageByteArray = Base64.encodeToString(imagedebate, Base64.DEFAULT)
+            nuevoDebate.extensionImage = "png"
             if(!inconsistenciasFormulario(nuevoDebate)){
                 createDebate(nuevoDebate)
             }
         })
+
         return root
     }
 
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        if (resultCode == Activity.RESULT_OK)
+        {
+            val selectedPhotoUri = data?.data
+            try {
+                selectedPhotoUri?.let {
+                val source = ImageDecoder.createSource(getActivity()!!.getContentResolver(), selectedPhotoUri)
+                val bitmap = ImageDecoder.decodeBitmap(source)
+                    val stream = ByteArrayOutputStream()
+                    bitmap.compress(Bitmap.CompressFormat.PNG, 90, stream)
+                    imagedebate = stream.toByteArray()
+                }
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
+        }
+    }
     fun createDebate(nuevoDebate: DTODebate){
         nuevoDebate.Autor =  PoliDebates.localStorage.getId();
         val solicitudHttp = httpRequestDebates.create(ApiService::class.java)

@@ -4,6 +4,16 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
 
+    <Button
+        android:id="@+id/button_pick_image"
+        android:layout_width="wrap_content"
+        android:layout_height="73dp"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="330dp"
+        android:gravity="center"
+        android:text="Imagen"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+
     <EditText
         android:id="@+id/editText_tittle_debate"
         android:layout_width="match_parent"
@@ -19,7 +29,7 @@
     <EditText
         android:id="@+id/editText_description_debate"
         android:layout_width="match_parent"
-        android:layout_height="195dp"
+        android:layout_height="170dp"
         android:layout_below="@+id/editText_tittle_debate"
         android:layout_marginTop="26dp"
         android:ems="10"
@@ -30,8 +40,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
-        android:layout_marginTop="17dp"
-        android:layout_marginBottom="283dp"
+        android:layout_marginBottom="248dp"
         android:gravity="center"
         android:text="Crear Debate"
         android:textAppearance="?android:attr/textAppearanceLarge" />
